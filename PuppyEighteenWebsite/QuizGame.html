@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Quiz Game Page</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+          integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+          crossorigin="anonymous"></script>
+    <link href="style.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lilita+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Amiri+Quran&display=swap" rel="stylesheet">
+</head>
+
+<header>
+  <h1>EIGHTEEN<span>WEBSITE</span></h1>
+  <nav>
+    <ul>
+      <li><a href="Home.html">Home</a></li>
+      <li><a href="AboutMe.html">About Me</a></li>
+      <li><a href="MyDogFriend.html">My Dog Friend</a></li>
+      <li><a href="QuizGame.html">Quiz Game</a></li>
+    </ul>
+  </nav>
+</header>
+
+<body>
+<div class="container-md main-part" style="font-family: 'Amiri Quran', serif;">
+  <form class="row g-3">
+    <p>
+      <br>
+      <br>
+      <br>
+    </p>
+    <h4 style="font-weight: bold";>Quiz Game</h4>
+
+    <!-- Q1 -->
+    <div class="col-md-8">
+      <label for="q1" class="form-label">What is my name?</label>
+      <input type="text" class="form-control" id="q1" >
+    </div>
+
+    <!-- Q2  -->
+    <div class="col-md-8 position-relative">
+      <label for="q2" class="form-label">How old is me?</label>
+      <input type="text" class="form-control" id="q2">
+    </div>
+
+    <!-- Q3 -->
+    <div class="col-md-8 position-relative">
+      <label for="q3" class="form-label">Write the name of one of my friend?</label>
+      <input type="text" class="form-control" id="q3" >
+    </div>
+
+    <p></p>
+  </form>
+
+  <!-- Button -->
+    <ul class="list-inline">
+
+      <li class="list-inline-item" id="position">
+        <div class="col-12">
+          <button class="btn btn-primary" id="updateButton" type="button" onclick="CheckTheAnswer()">Check</button>
+        </div>
+      </li>
+
+      <li class="list-inline-item" id="position2">
+        <div class="col-12">
+          <button class="btn btn-light" type="button" onclick="Cancel()">Cancel</button>
+        </div>
+      </li>
+
+    </ul>
+
+
+</div>
+
+<script>
+
+  function checkName() {
+    let myNames = ["18", "Eighteen", "eighteen"];
+    let q1 = document.getElementById('q1').value;
+    for (let i = 0; i < myNames.length; i++) {
+      if (myNames[i] == q1) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+
+  function checkAge(){
+    let myAge = ["4", "four years old", "four"];
+    let q2 = document.getElementById('q2').value;
+    let length = myAge.length
+    while(length--) {
+      if (myAge[length] === q2) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  function checkDogFriends(){
+    var dogFriends = ["Walnut","Potato","Yellow","yellow","potato","walnut","POTATO","WALNUT","YELLOW"];
+    var q3 = document.getElementById('q3').value;
+    for( i = 0; i < dogFriends.length; i++){
+      if(dogFriends[i] === q3){
+        return true;
+      }
+    }
+    return false;
+  }
+
+
+  function CheckTheAnswer(){
+    let q1 = document.getElementById('q1').value;
+    let q2 = document.getElementById('q2').value;
+    let q3 = document.getElementById('q3').value;
+
+    if(q1 == "" || q2 == "" || q3 == ""){
+      alert("Answer Cannot Be Empty, Please input.")
+    }else{
+      if(q1 != "" && q2!="" && q3 !="" ){
+
+        if (checkName() == true && checkAge() == true && checkDogFriends() == true){
+          alert("Congratulation, All your answer is correct.")
+        }
+
+        if(checkName() == false) {
+          alert("The first question answer is not correct, My name is Eighteen.")
+        }
+
+        if(checkAge() == false){
+          alert("The second question answer is not correct, I am 4 years old.")
+        }
+
+        if(checkDogFriends() == false){
+          alert("The third question answer is not correct, My best friends are Walnut, Potato, and Yellow.")
+        }
+      }
+    }
+  }
+
+  function Cancel() {
+    window.location.href = "QuizGame.html";
+  }
+
+</script>
+</body>
+</html>
